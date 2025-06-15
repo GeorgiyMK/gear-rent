@@ -6,10 +6,21 @@
     <div class="bg-black bg-opacity-50 p-8 rounded shadow-lg">
         <h1 class="text-4xl font-bold mb-4">Добро пожаловать!</h1>
         <p class="text-lg mb-6">Выберите один из наших пакетов аренды, чтобы начать приключение.</p>
-        <a href="{% url 'package_list' %}"
-           class="bg-black bg-opacity-40 text-white border border-white hover:bg-opacity-60 font-semibold py-2 px-6 rounded transition duration-200">
-            Перейти к пакетам
-        </a>
+
+        <div class="flex flex-col md:flex-row flex-wrap gap-4 justify-center">
+            <a href="{% url 'package_list' %}"
+               class="bg-black bg-opacity-40 text-white border border-white hover:bg-opacity-60 font-semibold py-2 px-6 rounded transition duration-200">
+                Перейти к пакетам
+            </a>
+            <a href="/rental-terms"
+               class="bg-black bg-opacity-40 text-white border border-white hover:bg-opacity-60 font-semibold py-2 px-6 rounded transition duration-200">
+                Условия аренды и возврата снаряжения
+            </a>
+            <a href="/digital-accessories"
+               class="bg-black bg-opacity-40 text-white border border-white hover:bg-opacity-60 font-semibold py-2 px-6 rounded transition duration-200">
+                Цифровые аксессуары и экшн-камеры
+            </a>
+        </div>
     </div>
 </div>
 {% endblock %}
