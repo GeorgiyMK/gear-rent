@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold mb-6 text-center bg-white bg-opacity-70 text-black px-4 py-2 rounded shadow">Пакеты аренды</h1>
+
+    {% with packages|dictsort:"id" as sorted_packages %}
+
+    <!-- Первый ряд: пакеты 1 и 4 -->
+    <div class="flex flex-wrap gap-6 justify-center">
+        {% for pack in sorted_packages %}
+            {% if pack.id == 1 or pack.id == 4 %}
+                <div class="w-full md:w-1/2">
+                    <a href="{% url 'package_detail' pack.id %}"
+                       class="block bg-white bg-opacity-80 text-black p-6 rounded shadow hover:shadow-lg">
+                        <h2 class="text-2xl font-semibold">{{ pack.name }}</h2>
+                        <p class="text-gray-700 mt-2">{{ pack.description }}</p>
+
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mt-2">
+                            {% for item in pack.gear_items.all %}
+                                {% if item.image %}
+                                    <img src="{{ item.image.url }}" alt="{{ item.name }}" class="h-32 object-cover rounded cursor-pointer" onclick="showModal(this.src)">
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+
+                        <div class="mt-4 text-green-700">
+                            <p>Будни: <strong>{{ pack.price_weekday }} ₽/день</strong></p>
+                            <p>Выходные: <strong>{{ pack.price_weekend }} ₽/день</strong></p>
+                        </div>
+
+                        {% if pack.requires_prebooking %}
+                        <p class="mt-2 text-red-600 font-semibold">⚠ Требуется предварительное бронирование. Минимум {{ pack.min_days_required }} дн.</p>
+                        {% endif %}
+                    </a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <!-- Остальные пакеты -->
+    <div class="flex flex-col gap-6 mt-10">
+        {% for pack in sorted_packages %}
+            {% if pack.id != 1 and pack.id != 4 %}
+                <div class="w-full">
+                    <a href="{% url 'package_detail' pack.id %}"
+                       class="block bg-white bg-opacity-80 text-black p-6 rounded shadow hover:shadow-lg">
+                        <h2 class="text-2xl font-semibold">{{ pack.name }}</h2>
+                        <p class="text-gray-700 mt-2">{{ pack.description }}</p>
+
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mt-2">
+                            {% for item in pack.gear_items.all %}
+                                {% if item.image %}
+                                    <img src="{{ item.image.url }}" alt="{{ item.name }}" class="h-32 object-cover rounded cursor-pointer" onclick="showModal(this.src)">
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+
+                        <div class="mt-4 text-green-700">
+                            <p>Будни: <strong>{{ pack.price_weekday }} ₽/день</strong></p>
+                            <p>Выходные: <strong>{{ pack.price_weekend }} ₽/день</strong></p>
+                        </div>
+
+                        {% if pack.requires_prebooking %}
+                        <p class="mt-2 text-red-600 font-semibold">⚠ Требуется предварительное бронирование. Минимум {{ pack.min_days_required }} дн.</p>
+                        {% endif %}
+                    </a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    {% endwith %}
+</div>
+
+<div id="imgModal" class="modal" onclick="closeModal()">
+    <img class="modal-content" id="modalImage">
+</div>
+
+<script>
+    function showModal(src) {
+        const modal = document.getElementById("imgModal");
+        const modalImg = document.getElementById("modalImage");
+        modalImg.src = src;
+        modal.style.display = "block";
+    }
+    function closeModal() {
+        document.getElementById("imgModal").style.display = "none";
+    }
+</script>
+{% endblock %}

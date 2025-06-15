@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold mb-6 text-center bg-white bg-opacity-70 text-black px-4 py-2 rounded shadow">{{ package.name }}</h1>
+
+    <p class="text-gray-800 text-lg mb-4">{{ package.description }}</p>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {% for item in package.gear_items.all %}
+            {% if item.image %}
+                <img src="{{ item.image.url }}" alt="{{ item.name }}" class="h-48 object-cover rounded cursor-pointer" onclick="showModal(this.src)">
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="mt-6 text-green-700">
+        <p>Будни: <strong>{{ package.price_weekday }} ₽/день</strong></p>
+        <p>Выходные: <strong>{{ package.price_weekend }} ₽/день</strong></p>
+    </div>
+
+    {% if package.requires_prebooking %}
+        <p class="mt-2 text-red-600 font-semibold">⚠ Требуется предварительное бронирование. Минимум {{ package.min_days_required }} дн.</p>
+    {% endif %}
+</div>
+
+<div id="imgModal" class="fixed z-50 inset-0 hidden items-center justify-center bg-black bg-opacity-75" onclick="closeModal()">
+    <img id="modalImage" class="max-w-full max-h-full rounded shadow-lg">
+</div>
+
+<script>
+    function showModal(src) {
+        const modal = document.getElementById("imgModal");
+        const modalImg = document.getElementById("modalImage");
+        modalImg.src = src;
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+    }
+    function closeModal() {
+        const modal = document.getElementById("imgModal");
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+    }
+</script>
+{% endblock %}

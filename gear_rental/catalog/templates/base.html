@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Аренда снаряжения{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("/media/DJI_0253.JPG");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 bg-opacity-90 text-white min-h-screen">
+    <header class="bg-black bg-opacity-70 p-4 shadow text-center">
+        <h1 class="text-2xl font-bold">Сервис аренды туристического снаряжения</h1>
+    </header>
+
+    <main class="p-4">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-black bg-opacity-70 p-4 mt-8 text-center text-sm">
+        &copy; 2025 Gear Rental. Все права защищены.
+    </footer>
+</body>
+</html>
