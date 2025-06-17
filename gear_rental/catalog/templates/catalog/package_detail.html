@@ -14,9 +14,10 @@
         {% endfor %}
     </div>
 
-    <div class="mt-6 text-green-700">
+    <div class="mt-6 text-green-700 space-y-1">
         <p>Будни: <strong>{{ package.price_weekday }} ₽/день</strong></p>
         <p>Выходные: <strong>{{ package.price_weekend }} ₽/день</strong></p>
+        <p class="text-yellow-700">Залоговая стоимость: <strong>{{ package.calculated_deposit }} ₽</strong></p>
     </div>
 
     {% if package.requires_prebooking %}

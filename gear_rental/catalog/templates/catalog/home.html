@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 <div class="flex flex-col items-center justify-center min-h-screen text-center text-white bg-cover bg-center"
@@ -23,4 +24,36 @@
         </div>
     </div>
 </div>
+
+<!-- Контакты -->
+<footer class="bg-black bg-opacity-80 text-white py-6 mt-8">
+    <div class="container mx-auto px-4">
+        <h2 class="text-xl font-bold mb-4 text-center">Контакты</h2>
+        <div class="flex flex-col md:flex-row justify-center items-center gap-6">
+            {% for contact in contacts %}
+                <div class="text-center">
+                    <p class="font-semibold">{{ contact.name }}</p>
+                    <p>{{ contact.phone }}</p>
+                    <div class="flex justify-center gap-3 mt-2">
+                        {% if contact.whatsapp_link %}
+                            <a href="{{ contact.whatsapp_link }}" target="_blank" aria-label="WhatsApp">
+                                <img src="{% static 'icons/whatsapp.svg' %}" alt="WhatsApp" class="h-6 w-6">
+                            </a>
+                        {% endif %}
+                        {% if contact.telegram_link %}
+                            <a href="{{ contact.telegram_link }}" target="_blank" aria-label="Telegram">
+                                <img src="{% static 'icons/telegram.svg' %}" alt="Telegram" class="h-6 w-6">
+                            </a>
+                        {% endif %}
+                        {% if contact.vk_group_link %}
+                            <a href="{{ contact.vk_group_link }}" target="_blank" aria-label="VK">
+                                <img src="{% static 'icons/vk.svg' %}" alt="VK" class="h-6 w-6">
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</footer>
 {% endblock %}
