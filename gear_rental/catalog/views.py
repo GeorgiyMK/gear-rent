@@ -24,3 +24,7 @@ def rental_terms(request):
 def digital_accessories_view(request):
     accessories = DigitalAccessory.objects.filter(available=True)
     return render(request, 'catalog/digital_accessories.html', {'accessories': accessories})
+
+def discounts(request):
+    return render(request, 'catalog/discounts.html')
+

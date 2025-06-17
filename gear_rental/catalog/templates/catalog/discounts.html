@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto px-6 py-10 bg-white bg-opacity-90 rounded shadow">
+    <h1 class="text-3xl font-bold mb-6 text-center text-black">Скидки и специальные предложения</h1>
+
+    <ul class="list-disc pl-6 space-y-3 text-gray-800 text-lg">
+        <li><strong>–10% при аренде от 5 суток.</strong></li>
+        <li><strong>–15% при аренде от 10 суток.</strong></li>
+        <li><strong>–20% при аренде от 15 суток.</strong></li>
+        <li><strong>Скидка 500 ₽</strong> для постоянных клиентов (3 и более аренд).</li>
+        <li><strong>Акция "Приведи друга":</strong> оба получают скидку 10%.</li>
+        <li>Сезонные и праздничные предложения публикуются в нашей <a href="#" class="text-blue-600 underline">группе ВКонтакте</a>.</li>
+    </ul>
+
+    <div class="mt-10 text-center">
+        <a href="{% url 'package_list' %}" class="bg-black text-white py-2 px-6 rounded hover:bg-opacity-80 transition">
+            К выбору пакета
+        </a>
+    </div>
+</div>
+{% endblock %}

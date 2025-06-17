@@ -6,6 +6,8 @@ from django.conf.urls.static import static
 from catalog.views import rental_terms
 from catalog.views import digital_accessories_view
 
+from catalog.views import discounts
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
@@ -14,6 +16,7 @@ urlpatterns = [
     path('gear/<int:item_id>/', gear_item_detail, name='gear_item_detail'),
     path('rental-terms/', rental_terms, name='rental_terms'),
     path('digital-accessories/', digital_accessories_view, name='digital_accessories'),
+    path('discounts/', discounts, name='discounts'),
 ]
 
 if settings.DEBUG:

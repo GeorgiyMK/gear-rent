@@ -4,31 +4,12 @@
 {% block content %}
 <div class="flex flex-col items-center justify-center min-h-screen text-center text-white bg-cover bg-center"
      style="background-image: url('/media/DJI_0253.JPG');">
-    <div class="bg-black bg-opacity-50 p-8 rounded shadow-lg">
-        <h1 class="text-4xl font-bold mb-4">Добро пожаловать!</h1>
-        <p class="text-lg mb-6">Выберите один из наших пакетов аренды, чтобы начать приключение.</p>
 
-        <div class="flex flex-col md:flex-row flex-wrap gap-4 justify-center">
-            <a href="{% url 'package_list' %}"
-               class="bg-black bg-opacity-40 text-white border border-white hover:bg-opacity-60 font-semibold py-2 px-6 rounded transition duration-200">
-                Перейти к пакетам
-            </a>
-            <a href="/rental-terms"
-               class="bg-black bg-opacity-40 text-white border border-white hover:bg-opacity-60 font-semibold py-2 px-6 rounded transition duration-200">
-                Условия аренды и возврата снаряжения
-            </a>
-            <a href="/digital-accessories"
-               class="bg-black bg-opacity-40 text-white border border-white hover:bg-opacity-60 font-semibold py-2 px-6 rounded transition duration-200">
-                Цифровые аксессуары и экшн-камеры
-            </a>
-        </div>
-    </div>
-</div>
 
-<!-- Контакты -->
-<footer class="bg-black bg-opacity-80 text-white py-6 mt-8">
-    <div class="container mx-auto px-4">
-        <h2 class="text-xl font-bold mb-4 text-center">Контакты</h2>
+
+    <!-- Контакты -->
+    <div class="bg-black bg-opacity-40 p-4 rounded shadow-lg w-full max-w-3xl text-white mb-4">
+        <h2 class="text-xl font-bold mb-2 text-center">Контакты</h2>
         <div class="flex flex-col md:flex-row justify-center items-center gap-6">
             {% for contact in contacts %}
                 <div class="text-center">
@@ -55,5 +36,31 @@
             {% endfor %}
         </div>
     </div>
-</footer>
+
+    <!-- Приветствие и кнопки -->
+    <div class="bg-black bg-opacity-50 p-8 rounded shadow-lg w-full max-w-3xl">
+        <h1 class="text-4xl font-bold mb-4">Добро пожаловать!</h1>
+        <p class="text-lg mb-6">Выберите один из наших пакетов аренды, чтобы начать приключение.</p>
+
+        <div class="flex flex-col md:flex-row flex-wrap gap-4 justify-center">
+            <a href="{% url 'package_list' %}"
+               class="bg-black bg-opacity-40 text-white border border-white hover:bg-opacity-60 font-semibold py-2 px-6 rounded transition duration-200">
+                Перейти к пакетам
+            </a>
+            <a href="/rental-terms"
+               class="bg-black bg-opacity-40 text-white border border-white hover:bg-opacity-60 font-semibold py-2 px-6 rounded transition duration-200">
+                Условия аренды и возврата снаряжения
+            </a>
+            <a href="/digital-accessories"
+               class="bg-black bg-opacity-40 text-white border border-white hover:bg-opacity-60 font-semibold py-2 px-6 rounded transition duration-200">
+                Цифровые аксессуары и экшн-камеры
+            </a>
+            <a href="{% url 'discounts' %}"
+                class="bg-black bg-opacity-40 text-white border border-white hover:bg-opacity-60 font-semibold py-2 px-6 rounded transition duration-200">
+                Скидки
+            </a>
+
+        </div>
+    </div>
+</div>
 {% endblock %}
