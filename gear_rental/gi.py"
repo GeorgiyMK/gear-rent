@@ -1,0 +1,18 @@
+[0;1;31m×[0m gunicorn.service - gunicorn daemon
+     Loaded: loaded (]8;;file://cv4920242.novalocal/etc/systemd/system/gunicorn.service/etc/systemd/system/gunicorn.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;31mfailed[0m (Result: exit-code) since Wed 2025-06-18 21:11:29 MSK; 8s ago
+   Duration: 220ms
+    Process: 26451 ExecStart=/opt/gear_rental/venv/bin/gunicorn --workers 3 --bind unix:/opt/gear_rental/gear_rental.sock gear_rental.wsgi:application [0;1;31m(code=exited, status=3)[0m
+   Main PID: 26451 (code=exited, status=3)
+        CPU: 207ms
+
+Jun 18 21:11:29 cv4920242.novalocal gunicorn[26452]:   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+Jun 18 21:11:29 cv4920242.novalocal gunicorn[26452]:   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+Jun 18 21:11:29 cv4920242.novalocal gunicorn[26452]:   File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+Jun 18 21:11:29 cv4920242.novalocal gunicorn[26452]: ModuleNotFoundError: No module named 'gear_rental.wsgi'
+Jun 18 21:11:29 cv4920242.novalocal gunicorn[26452]: [2025-06-18 21:11:29 +0300] [26452] [INFO] Worker exiting (pid: 26452)
+Jun 18 21:11:29 cv4920242.novalocal gunicorn[26451]: [2025-06-18 21:11:29 +0300] [26451] [ERROR] Worker (pid:26452) exited with code 3
+Jun 18 21:11:29 cv4920242.novalocal gunicorn[26451]: [2025-06-18 21:11:29 +0300] [26451] [ERROR] Shutting down: Master
+Jun 18 21:11:29 cv4920242.novalocal gunicorn[26451]: [2025-06-18 21:11:29 +0300] [26451] [ERROR] Reason: Worker failed to boot.
+Jun 18 21:11:29 cv4920242.novalocal systemd[1]: [0;1;39m[0;1;31m[0;1;39mgunicorn.service: Main process exited, code=exited, status=3/NOTIMPLEMENTED[0m
+Jun 18 21:11:29 cv4920242.novalocal systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mgunicorn.service: Failed with result 'exit-code'.[0m
